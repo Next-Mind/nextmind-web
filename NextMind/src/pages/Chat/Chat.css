@@ -1,0 +1,126 @@
+.chat-container {
+  display: flex;
+  height: 54rem;
+  width: 100rem;
+  background: #0f0f10;
+  color: #e0e0e0;
+}
+
+
+.conversas-lista {
+  width: 280px;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.conversa-item {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.conversa-item.ativo, .conversa-item:hover {
+  background: rgba(71,179,106,0.08);
+}
+
+.conversa-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.conversa-item div strong {
+  display: block;
+  color: #47b36a;
+}
+.conversa-item div p {
+  font-size: 0.85rem;
+  color: #cdd6d0;
+  margin: 2px 0 0;
+}
+
+
+.chat-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-box header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.chat-box header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.chat-box .mensagens {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.mensagem {
+  max-width: 60%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.mensagem.psicologo {
+  background: #47b36a;
+  align-self: flex-end;
+  color: #0f0f10;
+}
+
+.mensagem.paciente {
+  background: #1e1e1f;
+  align-self: flex-start;
+  color: #e0e0e0;
+}
+
+.mensagem small {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+}
+
+
+.chat-box footer {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.chat-box footer input {
+  flex: 1;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  background: #1e1e1f;
+  color: #e0e0e0;
+}
+
+.chat-box footer button {
+  background: #47b36a;
+  border: none;
+  border-radius: 8px;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: #0f0f10;
+}

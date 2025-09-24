@@ -1,0 +1,101 @@
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: #0f0f10;
+  color: #e0e0e0;
+}
+
+
+.conteudo-principal {
+  flex: 1;
+  padding: 2rem;
+  padding-top: 6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.cards-row {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+  margin-bottom: 1.6rem;
+}
+
+
+.cards-row {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+
+.cards-row::-webkit-scrollbar {
+  height: 8px;
+}
+.cards-row::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+}
+.cards-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+
+.painel {
+  background: #1e1e1f;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+.painel.dashboard {
+  padding: 2rem;
+  min-height: 400px;
+  width: 100%;
+  align-items: center;
+}
+
+
+.painel.chat {
+  padding: 1rem;
+  margin-top: -5rem;
+  min-height: 300px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+
+.painel.configuracoes {
+  padding: 2rem;
+   margin-top: -5rem;
+  min-height: 350px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+
+.painel.eventos {
+  padding: 1.8rem;
+  min-height: 380px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+
+.painel h3 {
+  margin-bottom: 1rem;
+  color: #47b36a;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+

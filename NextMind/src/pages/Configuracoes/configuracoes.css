@@ -1,0 +1,84 @@
+.painel.configuracoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+}
+
+
+.config-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+
+
+.config-container h2 {
+  color: #47b36a;
+  margin-bottom: 2rem;
+}
+
+.perfil-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.foto-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.foto-perfil img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #47b36a;
+}
+
+.foto-perfil .placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #2e2e2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 1rem;
+  border: 3px solid #47b36a;
+}
+
+.foto-perfil input[type="file"] {
+  cursor: pointer;
+  color: #fff;
+  margin-top: 0.5rem;
+}
+
+.info-perfil {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.info-perfil p {
+  font-size: 1.1rem;
+  background: #1e1e1f;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #333;
+}
+
+.info-perfil strong {
+  color: #47b36a;
+}
