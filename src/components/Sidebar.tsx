@@ -1,11 +1,6 @@
+import { type ReactNode } from "react";
 import "./Sidebar.css";
-import {
-  FiCalendar,
-  FiMapPin,
-  FiMessageSquare,
-  FiSettings,
-  FiLogOut,
-} from "react-icons/fi";
+import logo from "../assets/NextMindLogo.png";
 
 interface SidebarProps {
   ativo: string;
@@ -14,7 +9,7 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ ativo, setAtivo, onLogout }: SidebarProps) {
-  const Item = ({ id, icon, label }: { id: string; icon: any; label: string }) => (
+  const Item = ({ id, icon, label }: { id: string; icon: ReactNode; label: string }) => (
     <li
       className={ativo === id ? "ativo sidebar-item" : "sidebar-item"}
       onClick={() => setAtivo(id)}
@@ -30,21 +25,21 @@ export default function Sidebar({ ativo, setAtivo, onLogout }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <h2><img src="\src\assets\NextMindLogo.png" alt="NextMind" width={150} /></h2>
+        <img src={logo} alt="NextMind" width={150} />
       </div>
 
       <nav>
         <ul>
-          <Item id="dashboard" icon={<FiCalendar />} label="Dashboard" />
-          <Item id="consultas" icon={<FiMapPin />} label="Consultas" />
-          <Item id="chat" icon={<FiMessageSquare />} label="Chat" />
-          <Item id="configuracoes" icon={<FiSettings />} label="Configurações" />
+          <Item id="dashboard" icon={<span aria-hidden="true">📊</span>} label="Dashboard" />
+          <Item id="consultas" icon={<span aria-hidden="true">📅</span>} label="Consultas" />
+          <Item id="chat" icon={<span aria-hidden="true">💬</span>} label="Chat" />
+          <Item id="configuracoes" icon={<span aria-hidden="true">⚙️</span>} label="Configurações" />
         </ul>
       </nav>
 
       {onLogout && (
         <button className="logout-btn" onClick={onLogout} aria-label="Logout">
-          <FiLogOut />
+          <span aria-hidden="true">🚪</span>
           <span>Logout</span>
         </button>
       )}

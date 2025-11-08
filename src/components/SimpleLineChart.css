@@ -1,0 +1,32 @@
+.simple-line-chart {
+  background: linear-gradient(135deg, #1f2937, #374151);
+  border-radius: 16px;
+  padding: 24px;
+  color: #f9fafb;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.25);
+}
+
+.simple-line-chart svg {
+  display: block;
+}
+
+.simple-line-chart__legend {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 0.875rem;
+}
+
+.simple-line-chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.simple-line-chart__legend-item .legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  display: inline-block;
+}
