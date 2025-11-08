@@ -10,7 +10,7 @@ export type Guard = (context: NavigationContext) => string | null;
 
 export interface RouteDefinition {
   path: string;
-  component: ComponentType<unknown>;
+  component: ComponentType<any>;
   guard?: Guard;
 }
 
