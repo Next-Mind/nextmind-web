@@ -1,6 +1,6 @@
 import { getAuthState } from "../stores/authStoreBase";
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://api.nextmind.sbs";
 
 type RequestOptions = Omit<RequestInit, "body" | "headers"> & {
   parseJson?: boolean;
