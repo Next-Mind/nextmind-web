@@ -79,6 +79,10 @@ export async function httpRequest<T>(path: string, options: RequestOptions = {})
     finalHeaders.set("Accept", "application/json");
   }
 
+  if (!finalHeaders.has("X-Requested-With")) {
+  finalHeaders.set("X-Requested-With", "XMLHttpRequest");
+  }
+
   if (!finalHeaders.has("X-Client")) {
     finalHeaders.set("X-Client", "spa");
   }
