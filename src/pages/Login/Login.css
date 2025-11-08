@@ -115,6 +115,11 @@
   background: #369055;
 }
 
+.btn-primary:disabled {
+  background: #2f6d45;
+  cursor: not-allowed;
+}
+
 .btn-secondary {
   background: #333;
   color: #e0e0e0;

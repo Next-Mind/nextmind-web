@@ -19,7 +19,7 @@ export default function Consultas() {
     { paciente: "Lucas Santos", data: "27/09/2025" },
   ]);
 
-  const [eventos, setEventos] = useState<Evento[]>([
+  const [eventos] = useState<Evento[]>([
     { titulo: "Workshop de Psicologia", data: "30/09/2025" },
     { titulo: "Reunião com Escola ABC", data: "05/10/2025" },
   ]);
