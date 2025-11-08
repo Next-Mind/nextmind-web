@@ -125,6 +125,10 @@ export default function Login() {
           {isSubmitting ? "Entrando..." : "Entrar"}
         </button>
 
+        <div className="extra-options">
+          <a href="/register/psychologist">Cadastre-se como psicólogo</a>
+        </div>
+
         {errors.general && <p className="mensagem">{errors.general}</p>}
       </form>
     </div>
