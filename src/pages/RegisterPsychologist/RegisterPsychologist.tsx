@@ -236,7 +236,12 @@ export default function RegisterPsychologist() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-    const { name, value, type, checked } = event.target;
+    const target =
+      event.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+    const { name, value } = target;
+    const isCheckbox =
+      target instanceof HTMLInputElement && target.type === "checkbox";
+    const nextValue = isCheckbox ? target.checked : value;
 
     setFormValues((previous) => {
       if (name.startsWith("address.")) {
@@ -245,7 +250,7 @@ export default function RegisterPsychologist() {
           ...previous,
           address: {
             ...previous.address,
-            [field]: type === "checkbox" ? checked : value,
+            [field]: nextValue,
           },
         };
       }
@@ -256,14 +261,14 @@ export default function RegisterPsychologist() {
           ...previous,
           phone: {
             ...previous.phone,
-            [field]: type === "checkbox" ? checked : value,
+            [field]: nextValue,
           },
         };
       }
 
       return {
         ...previous,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: nextValue,
       } as FormValues;
     });
   };
