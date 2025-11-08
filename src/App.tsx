@@ -1,24 +1,14 @@
-import { useState, useEffect } from "react";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/Dasboard/Dashboard";
-
+import { clearAuthState, useAuthState } from "./stores/authStore";
 
 export default function App() {
-  const [usuarioLogado, setUsuarioLogado] = useState(false);
-
-  useEffect(() => {
-    const currentUser = localStorage.getItem("currentUser");
-    if (currentUser) setUsuarioLogado(true);
-  }, []);
+  const { token } = useAuthState();
+  const usuarioLogado = Boolean(token);
 
   const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    setUsuarioLogado(false);
+    clearAuthState();
   };
 
-  return usuarioLogado ? (
-    <Dashboard onLogout={handleLogout} />
-  ) : (
-    <Login onLoginSucesso={() => setUsuarioLogado(true)} />
-  );
+  return usuarioLogado ? <Dashboard onLogout={handleLogout} /> : <Login />;
 }
