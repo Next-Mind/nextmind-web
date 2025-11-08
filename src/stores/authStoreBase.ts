@@ -78,3 +78,15 @@ export function subscribeAuthState(listener: (next: AuthState) => void) {
 export function getInitialAuthState() {
   return initialState;
 }
+
+function hasValidToken(token: string | null): boolean {
+  return typeof token === "string" && token.trim().length > 0;
+}
+
+export function isAuthenticated(nextState: AuthState): boolean {
+  if (hasValidToken(nextState.token)) {
+    return true;
+  }
+
+  return nextState.data !== null && nextState.data !== undefined;
+}
