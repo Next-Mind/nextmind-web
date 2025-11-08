@@ -79,6 +79,10 @@ export async function httpRequest<T>(path: string, options: RequestOptions = {})
     finalHeaders.set("Accept", "application/json");
   }
 
+  if (!finalHeaders.has("X-Client")) {
+    finalHeaders.set("X-Client", "web");
+  }
+
   if (token && !finalHeaders.has("Authorization")) {
     finalHeaders.set("Authorization", `Bearer ${token}`);
   }
