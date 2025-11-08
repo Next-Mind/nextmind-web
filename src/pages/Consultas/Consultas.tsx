@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Consultas.css";
 import Card from "../../components/Card";
-import { FiCalendar, FiMapPin } from "react-icons/fi";
 
 interface Consulta {
   paciente: string;
@@ -39,13 +38,13 @@ export default function Consultas() {
         <Card
           titulo="Consultas desta semana"
           descricao={`Você tem ${consultas.length} consultas`}
-          icon={<FiCalendar />}
+          icon={<span aria-hidden="true">📅</span>}
           destaque={String(consultas.length)}
         />
         <Card
           titulo="Eventos do mês"
           descricao={`${eventos.length} eventos`}
-          icon={<FiMapPin />}
+          icon={<span aria-hidden="true">📍</span>}
           destaque={String(eventos.length)}
         />
       </section>

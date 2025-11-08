@@ -8,11 +8,16 @@
   border-right: 1px solid rgba(255,255,255,0.03);
 }
 
-.sidebar-brand h2 {
-  color: #47b36a;
+.sidebar-brand {
   text-align: center;
-  margin: 0 0 0.6rem 0;
-  width: 10px;  
+}
+
+.sidebar-brand img {
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.3));
 }
 
 
