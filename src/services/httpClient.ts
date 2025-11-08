@@ -80,7 +80,7 @@ export async function httpRequest<T>(path: string, options: RequestOptions = {})
   }
 
   if (!finalHeaders.has("X-Client")) {
-    finalHeaders.set("X-Client", "web");
+    finalHeaders.set("X-Client", "spa");
   }
 
   if (token && !finalHeaders.has("Authorization")) {
