@@ -5,7 +5,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { clearAuthState, useAuthState } from "./stores/authStore";
+import { clearAuthState, isAuthenticated, useAuthState } from "./stores/authStore";
 import { getInitialRoutePath, resolveRoute } from "./routes/router";
 import type { DashboardProps } from "./pages/Dasboard/Dashboard";
 
@@ -18,8 +18,8 @@ function getInitialPathname() {
 }
 
 export default function App() {
-  const { token } = useAuthState();
-  const usuarioLogado = Boolean(token);
+  const authState = useAuthState();
+  const usuarioLogado = isAuthenticated(authState);
   const [currentPath, setCurrentPath] = useState(getInitialPathname);
 
   useEffect(() => {

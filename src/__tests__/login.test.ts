@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import { login } from "../services/auth";
-import { clearAuthState, getAuthState } from "../stores/authStoreBase";
+import {
+  clearAuthState,
+  getAuthState,
+  isAuthenticated,
+  setAuthState,
+} from "../stores/authStoreBase";
 
 async function testLoginSuccess() {
   clearAuthState();
@@ -75,10 +80,26 @@ async function testLoginUnauthorized() {
   assert.equal(getAuthState().token, null);
 }
 
+async function testAuthenticationStateHeuristics() {
+  clearAuthState();
+  assert.equal(isAuthenticated(getAuthState()), false);
+
+  setAuthState({ token: "abc" });
+  assert.equal(isAuthenticated(getAuthState()), true);
+
+  clearAuthState();
+  setAuthState({ data: { id: 1 }, token: null });
+  assert.equal(isAuthenticated(getAuthState()), true);
+}
+
 export async function runTests() {
   const tests: Array<[string, () => Promise<void>]> = [
     ["should perform login and return response", testLoginSuccess],
     ["should throw for unauthorized login", testLoginUnauthorized],
+    [
+      "should detect authentication when token is missing but user data exists",
+      testAuthenticationStateHeuristics,
+    ],
   ];
 
   let failures = 0;
