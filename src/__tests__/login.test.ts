@@ -14,6 +14,8 @@ async function testLoginSuccess() {
       assert.equal(url, "https://api.nextmind.sbs/sanctum/csrf-cookie");
       assert.equal(init?.method ?? "GET", "GET");
       assert.equal(init?.credentials, "include");
+      const headers = new Headers(init?.headers);
+      assert.equal(headers.get("X-Client"), "web");
       return new Response(null, { status: 204 });
     }
 
@@ -21,6 +23,8 @@ async function testLoginSuccess() {
     assert.equal(url, "https://api.nextmind.sbs/login");
     assert.equal(init?.method, "POST");
     assert.equal(init?.credentials, "include");
+    const headers = new Headers(init?.headers);
+    assert.equal(headers.get("X-Client"), "web");
     const body = init?.body ? JSON.parse(String(init.body)) : null;
     assert.deepEqual(body, { email: "user@example.com", password: "secret" });
 
@@ -46,8 +50,13 @@ async function testLoginUnauthorized() {
     requests.push({ url, options: init });
 
     if (requests.length === 1) {
+      const headers = new Headers(init?.headers);
+      assert.equal(headers.get("X-Client"), "web");
       return new Response(null, { status: 204 });
     }
+
+    const headers = new Headers(init?.headers);
+    assert.equal(headers.get("X-Client"), "web");
 
     return new Response(JSON.stringify({ message: "Credenciais inválidas" }), {
       status: 401,
