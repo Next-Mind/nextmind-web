@@ -1,6 +1,6 @@
 import { getAuthState } from "../stores/authStoreBase";
 
-const API_BASE_URL = "https://api.nextmind.sbs";
+const API_BASE_URL = "http://localhost:8000";
 
 type RequestOptions = Omit<RequestInit, "body" | "headers"> & {
   parseJson?: boolean;
@@ -68,6 +68,16 @@ export async function httpRequest<T>(path: string, options: RequestOptions = {})
   const { parseJson = true, headers, body, ...rest } = options;
 
   const finalHeaders = new Headers(headers ?? {});
+
+  function getCookie(name: string) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? decodeURIComponent(match[2]) : null;
+  }
+
+  const xsrf = getCookie('XSRF-TOKEN');
+  if (xsrf && !finalHeaders.has('X-XSRF-TOKEN')) {
+    finalHeaders.set('X-XSRF-TOKEN', xsrf);
+  }
 
   if (parseJson && body !== undefined && !(body instanceof FormData)) {
     if (!finalHeaders.has("Content-Type")) {
