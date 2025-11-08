@@ -8,7 +8,7 @@ import Chat from "../Chat/Chat";
 import Configuracoes from "../Configuracoes/Configuracoes";
 
 
-interface DashboardProps {
+export interface DashboardProps {
   onLogout?: () => void;
 }
 

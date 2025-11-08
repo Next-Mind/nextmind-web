@@ -70,13 +70,17 @@ export async function httpRequest<T>(path: string, options: RequestOptions = {})
   const finalHeaders = new Headers(headers ?? {});
 
   function getCookie(name: string) {
-    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (typeof document === "undefined") {
+      return null;
+    }
+
+    const match = document.cookie.match(new RegExp(`(^| )${name}=([^;]+)`));
     return match ? decodeURIComponent(match[2]) : null;
   }
 
-  const xsrf = getCookie('XSRF-TOKEN');
-  if (xsrf && !finalHeaders.has('X-XSRF-TOKEN')) {
-    finalHeaders.set('X-XSRF-TOKEN', xsrf);
+  const xsrf = getCookie("XSRF-TOKEN");
+  if (xsrf && !finalHeaders.has("X-XSRF-TOKEN")) {
+    finalHeaders.set("X-XSRF-TOKEN", xsrf);
   }
 
   if (parseJson && body !== undefined && !(body instanceof FormData)) {
@@ -90,7 +94,7 @@ export async function httpRequest<T>(path: string, options: RequestOptions = {})
   }
 
   if (!finalHeaders.has("X-Requested-With")) {
-  finalHeaders.set("X-Requested-With", "XMLHttpRequest");
+    finalHeaders.set("X-Requested-With", "XMLHttpRequest");
   }
 
   if (!finalHeaders.has("X-Client")) {
