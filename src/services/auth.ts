@@ -13,6 +13,6 @@ export interface LoginResponse {
 
 export async function login(payload: LoginPayload): Promise<LoginResponse> {
   await get("/sanctum/csrf-cookie", { parseJson: false });
-  const { data } = await post<LoginResponse>("/login", payload);
+  const { data } = await post<LoginResponse>("/login/web", payload);
   return data;
 }

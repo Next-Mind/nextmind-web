@@ -20,7 +20,7 @@ async function testLoginSuccess() {
     }
 
     assert.equal(requests.length, 2);
-    assert.equal(url, "https://api.nextmind.sbs/login");
+    assert.equal(url, "https://api.nextmind.sbs/login/web");
     assert.equal(init?.method, "POST");
     assert.equal(init?.credentials, "include");
     const headers = new Headers(init?.headers);
