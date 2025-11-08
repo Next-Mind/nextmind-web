@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import Dashboard from "../pages/Dasboard/Dashboard";
 import Login from "../pages/Login/Login";
+import RegisterPsychologist from "../pages/RegisterPsychologist/RegisterPsychologist";
 
 export type NavigationContext = {
   isAuthenticated: boolean;
@@ -10,7 +11,7 @@ export type Guard = (context: NavigationContext) => string | null;
 
 export interface RouteDefinition {
   path: string;
-  component: ComponentType<any>;
+  component: ComponentType;
   guard?: Guard;
 }
 
@@ -22,6 +23,11 @@ export const mustBeGuest: Guard = ({ isAuthenticated }) =>
 
 export const routes: RouteDefinition[] = [
   { path: "/login", component: Login, guard: mustBeGuest },
+  {
+    path: "/register/psychologist",
+    component: RegisterPsychologist,
+    guard: mustBeGuest,
+  },
   { path: "/dashboard", component: Dashboard, guard: mustBeAuthenticated },
 ];
 
